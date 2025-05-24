@@ -13,11 +13,24 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', form);
-      localStorage.setItem('user', JSON.stringify(res.data));
-      navigate('/profile');
+      // ✅ Use proxy path instead of hardcoded URL
+      const res = await axios.post('/api/auth/login', form, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        withCredentials: true
+      });
+
+      // ✅ Check res.data before using it
+      if (res && res.data) {
+        localStorage.setItem('user', JSON.stringify(res.data));
+        navigate('/profile'); // adjust path if needed
+      } else {
+        alert('Login failed: Empty server response');
+      }
     } catch (err) {
-      alert(err.response.data.message || 'Login failed');
+      console.error(err);
+      alert(err.response?.data?.message || err.message || 'Login failed');
     }
   };
 
