@@ -22,6 +22,7 @@ function App() {
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user'));
 
   return (
     <nav className="navbar">
@@ -35,14 +36,25 @@ const Navbar = () => {
         <Link to="/">Terms</Link>
         <Link to="/">Pricing</Link>
         <Link to="/">Careers</Link>
+        <Link to="/profile">Profile</Link>
       </div>
 
       <div className="auth-buttons">
-        <button onClick={() => navigate('/login')}>Log In / Sign Up</button>
+        {!user ? (
+          <button onClick={() => navigate('/login')}>Log In / Sign Up</button>
+        ) : (
+          <button
+            onClick={() => {
+              localStorage.removeItem('user');
+              window.location.reload(); // or navigate('/') if using state later
+            }}
+          >
+            Logout
+          </button>
+        )}
       </div>
     </nav>
   );
 };
-
 
 export default App;
