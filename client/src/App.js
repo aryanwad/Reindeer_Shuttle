@@ -5,6 +5,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import HomePage from './pages/HomePage';
+import Booking from "./pages/Booking";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/booking" element={<Booking />} />
       </Routes>
     </Router>
   );
@@ -29,7 +31,7 @@ const Navbar = () => {
       <div className="logo">REINDEER <span>SHUTTLE</span></div>
 
       <div className="links">
-        <Link to="/">Book Now</Link>
+        <Link to="/booking">Book Now</Link>
         <Link to="/">Charters</Link>
         <Link to="/">FAQ</Link>
         <Link to="/">Reviews</Link>
