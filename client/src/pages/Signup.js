@@ -13,7 +13,15 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/signup', form);
+      // ✅ Use relative URL + headers + credentials
+      await axios.post('/api/auth/signup', form, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        withCredentials: true
+      });
+      
+      
       alert('Signup successful! You can now log in.');
       navigate('/login');
     } catch (err) {

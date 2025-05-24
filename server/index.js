@@ -5,10 +5,20 @@ require('dotenv').config();
 
 const app = express();
 connectDB();
-app.use(cors());
+
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true
+};
+  
+app.use(cors(corsOptions));
+  
 app.use(express.json());
+
+app.get('/ping', (req, res) => res.send('pong'));
 
 app.use('/api/auth', require('./routes/auth'));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5050;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
