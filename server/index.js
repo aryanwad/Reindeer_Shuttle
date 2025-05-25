@@ -20,6 +20,8 @@ app.get('/ping', (req, res) => res.send('pong'));
 
 app.use('/api/auth', require('./routes/auth'));
 
+app.use('/api/checkin', require('./routes/checkin'));
+
 app.use('/api/bookings', require('./routes/bookings'));
 
 const PORT = process.env.PORT || 5050;

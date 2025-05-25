@@ -3,8 +3,13 @@
     "concurrently": "^9.1.2"
   },
   "scripts": {
-  "client": "npm --prefix client start",
-  "server": "cd server && nodemon index.js",
-  "start": "concurrently \"npm run server\" \"npm run client\""
+    "client": "npm --prefix client start",
+    "server": "cd server && nodemon index.js",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "html5-qrcode": "^2.3.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }

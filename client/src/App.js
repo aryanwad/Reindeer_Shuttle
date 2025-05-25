@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import HomePage from './pages/HomePage';
 import Booking from "./pages/Booking";
+import CheckIn from "./pages/CheckIn";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/checkin" element={<CheckIn />} />
       </Routes>
     </Router>
   );
@@ -39,6 +41,7 @@ const Navbar = () => {
         <Link to="/">Pricing</Link>
         <Link to="/">Careers</Link>
         <Link to="/profile">Profile</Link>
+        <Link to="/checkin">Check In</Link>
       </div>
 
       <div className="auth-buttons">
